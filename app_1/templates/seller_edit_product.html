@@ -1,0 +1,186 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+
+<head>
+</head>
+
+<body>
+
+
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active"> Edit product </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+    <!-- Start Contact Us  -->
+    <div class="contact-box-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-sm-12">
+                    <div class="contact-form-right">
+                        <h2>EDIT PRODUCT</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed odio justo, ultrices ac nisl sed, lobortis porta elit. Fusce in metus ac ex venenatis ultricies at cursus mauris.</p>
+                        <form name="seller_edit_product" method="POST" action="{% url 'seller_edit_product' pk=product.pk %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row">
+
+                                 <div class="col-md-12">
+                                    <label>Product Category</label>
+                                    <select name="product_category">
+                                        
+                                        {% if product.product_category == "kid" %}
+                                            <option value="kid" selected="selected">Kids</option>
+                                        {% elif product.product_category == "men" %}
+                                            <option value="men" selected="selected">Men</option>
+                                        {% elif product.product_category == "women" %}
+                                            <option value="women" selected="selected">Women</option>
+                                        {% else %}
+                                            <option>---Select Product Category---</option>
+                                            <option value="kid">Kids</option>
+                                            <option value="men">Men</option>
+                                            <option value="women">Women</option>
+                                        {% endif %}
+                                    </select>
+
+                                    
+                                </div>
+                                <br><br>
+
+                                
+                                <div class="col-md-12">
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="product_name" placeholder="Product Name" value="{{product.product_name}}">
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="product_price" placeholder="Product Price" value="{{product.product_price}}">
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Product Description" class="form-control" name="product_desc" value="{{product.product_desc}}">
+                                       
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Product Color</label>
+                                    <select name="product_color">
+                                        
+                                        {% if product.product_color == "red" %}
+                                            <option value="red" selected="selected">Red</option>
+                                        {% elif product.product_color == "black" %}
+                                            <option value="black" selected="selected">Black</option>
+                                        {% elif product.product_color == "green" %}
+                                            <option value="green" selected="selected">Green</option>
+                                        {% elif product.product_color == "blue" %}
+                                            <option value="blue" selected="selected">Blue</option>
+                                        {% elif product.product_color == "yellow" %}
+                                            <option value="yellow" selected="selected">Yellow</option>
+
+                                        {% else %}
+                                            <option>---Select Product Color---</option>
+                                            <option value="red">Red</option>
+                                            <option value="black">Black</option>
+                                            <option value="green">Green</option>
+                                            <option value="blue">Blue</option>
+                                            <option value="yellow">Yellow</option>
+                                        {% endif %}
+                                    </select>
+
+                                 </div>
+                                 <br><br>
+
+                                <div class="col-md-12">
+                                    <label>Product Size</label>
+                                    <select name="product_size">
+                                        
+                                        {% if product.product_size == "s" %}
+                                            <option value="s" selected="selected">S</option>
+                                        {% elif product.product_size == "m" %}
+                                            <option value="m" selected="selected">M</option>
+                                        {% elif product.product_size == "l" %}
+                                            <option value="l" selected="selected">L</option>
+                                        {% else %}
+                                            <option>---Select Product Size---</option>
+                                            <option value="s">S</option>
+                                            <option value="m">M</option>
+                                            <option value="l">L</option>
+                                        {% endif %}
+                                    </select>
+
+                                    
+                                </div>
+                                <br><br>
+                                <div class="col-md-12">
+                                    <label>Current  Product Image</label><br>
+                                        <img src="{{product.product_image.url}}" height="200px" width="170px">
+                                   
+                                 </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="file" class="form-control" name="product_image" placeholder="Product Image">
+                                    </div>    
+                                 </div>
+                               
+                                <div class="col-md-12">
+                                    
+                                    <div class="submit-button text-center">
+                                        <button class="btn hvr-hover" type="submit" value="add_product">Update Product</button>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    
+                                    {{msg}}
+                                        
+                                    
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+				<div class="col-lg-4 col-sm-12">
+                    <div class="contact-info-left">
+                        <h2>CONTACT INFO</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
+                        <ul>
+                            <li>
+                                <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 9000 <br>Preston Street Wichita,<br> KS 87213 </p>
+                            </li>
+                            <li>
+                                <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888 705 770</a></p>
+                            </li>
+                            <li>
+                                <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Cart -->
+
+ </body>
+
+</html>
+{% endblock %}
